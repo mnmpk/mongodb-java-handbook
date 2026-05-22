@@ -121,6 +121,11 @@
 			<artifactId>langchain4j-mcp</artifactId>
 			<version>1.14.1-beta24</version>
 		</dependency>
+		<dependency>
+			<groupId>dev.langchain4j</groupId>
+			<artifactId>langchain4j-mcp-docker</artifactId>
+			<version>1.14.1-beta24</version>
+		</dependency>
 
 		
 

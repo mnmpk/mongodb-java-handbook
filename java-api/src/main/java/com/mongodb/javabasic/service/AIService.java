@@ -21,9 +21,10 @@ import com.mongodb.javabasic.ai.langgraph.MongoDBSaver;
 import dev.langchain4j.data.message.AiMessage;
 import dev.langchain4j.data.message.SystemMessage;
 import dev.langchain4j.data.message.UserMessage;
-import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.mcp.client.DefaultMcpClient;
 import dev.langchain4j.mcp.client.McpClient;
+import dev.langchain4j.mcp.client.transport.docker.DockerMcpTransport;
+import dev.langchain4j.mcp.client.transport.http.StreamableHttpMcpTransport;
 import dev.langchain4j.mcp.client.transport.stdio.StdioMcpTransport;
 import dev.langchain4j.model.chat.ChatModel;
 
@@ -45,14 +46,28 @@ public class AIService {
 
         public String runAgent(String tId, String prompt) throws GraphStateException {
 
-                StdioMcpTransport transport = new StdioMcpTransport.Builder()
-                                .command(List.of("npx", "-y",
-                                                "mongodb-mcp-server@latest",
-                                                "--readOnly"))
-                                .logEvents(true).environment(Map.of(
+                // StreamableHttpMcpTransport transport = StreamableHttpMcpTransport.builder()
+                // .url("http://localhost:3000")
+                // .logRequests(true) // if you want to see the traffic in the log
+                // .logResponses(true)
+                // .build();*/
+                // StdioMcpTransport transport2 = new StdioMcpTransport.Builder()
+                // .command(List.of("npx", "-y",
+                // "mongodb-mcp-server@latest",
+                // "--readOnly"))
+                // .logEvents(true).environment(Map.of(
+                // "MDB_MCP_API_CLIENT_ID", "<client-id>",
+                // "MDB_MCP_API_CLIENT_SECRET", "<client-secret>",
+                // "MDB_MCP_CONNECTION_STRING", uri + dbName))
+                // .build();
+                DockerMcpTransport transport = DockerMcpTransport.builder()
+                                .image("mongodb/mongodb-mcp-server:latest")
+                                .dockerHost("unix:///var/run/docker.sock")
+                                .environment(Map.of(
                                                 // "MDB_MCP_API_CLIENT_ID", "<client-id>",
                                                 // "MDB_MCP_API_CLIENT_SECRET", "<client-secret>",
                                                 "MDB_MCP_CONNECTION_STRING", uri + dbName))
+                                .logEvents(true) // if you want to see the traffic in the log
                                 .build();
 
                 // 2. Create the MCP Client
