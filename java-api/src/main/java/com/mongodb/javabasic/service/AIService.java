@@ -47,7 +47,7 @@ public class AIService {
         public String runAgent(String tId, String prompt) throws GraphStateException {
 
                 StreamableHttpMcpTransport transport = StreamableHttpMcpTransport.builder()
-                                .url("http://localhost:3000")
+                                .url("http://localhost:3000/mcp")
                                 .logRequests(true) // if you want to see the traffic in the log
                                 .logResponses(true)
                                 .build();
