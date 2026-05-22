@@ -106,7 +106,7 @@ public class AIService {
 
                 return state.lastMessage().map(AiMessage.class::cast)
                                 .map(AiMessage::text)
-                                .orElseThrow();
+                                .orElse("No response generated");
 
         }
 }
