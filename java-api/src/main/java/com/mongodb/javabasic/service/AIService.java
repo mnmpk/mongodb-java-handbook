@@ -46,11 +46,11 @@ public class AIService {
 
         public String runAgent(String tId, String prompt) throws GraphStateException {
 
-                // StreamableHttpMcpTransport transport = StreamableHttpMcpTransport.builder()
-                // .url("http://localhost:3000")
-                // .logRequests(true) // if you want to see the traffic in the log
-                // .logResponses(true)
-                // .build();*/
+                StreamableHttpMcpTransport transport = StreamableHttpMcpTransport.builder()
+                                .url("http://localhost:3000")
+                                .logRequests(true) // if you want to see the traffic in the log
+                                .logResponses(true)
+                                .build();
                 // StdioMcpTransport transport2 = new StdioMcpTransport.Builder()
                 // .command(List.of("npx", "-y",
                 // "mongodb-mcp-server@latest",
@@ -60,15 +60,15 @@ public class AIService {
                 // "MDB_MCP_API_CLIENT_SECRET", "<client-secret>",
                 // "MDB_MCP_CONNECTION_STRING", uri + dbName))
                 // .build();
-                DockerMcpTransport transport = DockerMcpTransport.builder()
-                                .image("mongodb/mongodb-mcp-server:latest")
-                                .dockerHost("unix:///var/run/docker.sock")
-                                .environment(Map.of(
-                                                // "MDB_MCP_API_CLIENT_ID", "<client-id>",
-                                                // "MDB_MCP_API_CLIENT_SECRET", "<client-secret>",
-                                                "MDB_MCP_CONNECTION_STRING", uri + dbName))
-                                .logEvents(true) // if you want to see the traffic in the log
-                                .build();
+                // DockerMcpTransport transport = DockerMcpTransport.builder()
+                // .image("mongodb/mongodb-mcp-server:latest")
+                // .dockerHost("unix:///var/run/docker.sock")
+                // .environment(Map.of(
+                // // "MDB_MCP_API_CLIENT_ID", "<client-id>",
+                // // "MDB_MCP_API_CLIENT_SECRET", "<client-secret>",
+                // "MDB_MCP_CONNECTION_STRING", uri + dbName))
+                // .logEvents(true) // if you want to see the traffic in the log
+                // .build();
 
                 // 2. Create the MCP Client
                 McpClient mcpClient = new DefaultMcpClient.Builder()
