@@ -56,3 +56,6 @@ spec:
           value: "mongodb+srv://dev:${DATABASE_PASSWORD}@demo.uskpz.mongodb.net/"
         - name: MDB_MCP_TRANSPORT
           value: "http"
+        ports:
+        - containerPort: 3000
+        - containerPort: 3000
