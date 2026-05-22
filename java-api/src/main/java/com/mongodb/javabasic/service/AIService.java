@@ -79,7 +79,7 @@ public class AIService {
                 // 3. Optional: Perform a health check
                 mcpClient.checkHealth();
                 var agent = AgentExecutor.builder().systemMessage(SystemMessage.from(
-                                "You are an expert data analyst assistant. Your task is to analyze user-provided data and generate insights. Instructions: Always summarize findings first, followed by detailed analysis. Constraints: Only use the data provided by the user. If the data is insufficient, ask for clarification. Output Format: Output analysis in HTML format with bullet points for key takeaways."))
+                                "You are an expert data analyst assistant. Your task is to analyze the database and generate insights. Instructions: Always summarize findings first, followed by detailed analysis. Output Format: Output analysis in HTML format with bullet points for key takeaways."))
                                 .chatModel(chatModel)
                                 .toolsFromObject(tools)
                                 .tool(mcpClient)
