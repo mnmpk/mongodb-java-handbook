@@ -3,7 +3,7 @@ kind: BackendConfig
 metadata:
   name: ${APP_NAME}-backend-config
 spec:
-  timeoutSec: 90
+  timeoutSec: 600
   healthCheck:
     checkIntervalSec: 15
     port: 8080
