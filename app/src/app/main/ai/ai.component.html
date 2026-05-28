@@ -10,7 +10,8 @@
             </mat-form-field>
         </div>
     </form>
-    <textarea style="min-height: 500px;">{{result}}</textarea>
+    <!--textarea style="min-height: 500px;">{{result}}</textarea-->
+    <iframe class="bg-light" [srcdoc]="result"></iframe>
     TODO:
     <ul>
         <li>Long-term memory</li>

@@ -12,7 +12,13 @@ import { MetricsService } from '../../metrics/metrics.service';
 export class AIComponent {
   form!: FormGroup;
   loading = false;
-  result!:string;
+  _result!: string;
+  set result(value: string) {
+    this._result = value.replaceAll("```", '')
+  }
+  get result(): string {
+    return this._result;
+  }
 
   constructor(private formBuilder: FormBuilder, private service: AIService, private metricsService: MetricsService) {
 
