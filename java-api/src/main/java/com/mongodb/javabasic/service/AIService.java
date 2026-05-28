@@ -73,7 +73,7 @@ public class AIService {
                 // 2. Create the MCP Client
                 McpClient mcpClient = new DefaultMcpClient.Builder()
                                 .transport(transport).promptsTimeout(Duration.ofSeconds(300))
-                                .resourcesTimeout(Duration.ofSeconds(300)).toolExecutionTimeout(Duration.ofSeconds(30))
+                                .resourcesTimeout(Duration.ofSeconds(300)).toolExecutionTimeout(Duration.ofSeconds(300))
                                 .build();
 
                 // 3. Optional: Perform a health check
